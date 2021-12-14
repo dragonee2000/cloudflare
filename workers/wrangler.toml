@@ -1,9 +1,0 @@
-name = "general-assignment"
-type = "javascript"
-account_id = "9bbc39bc243c74bac386984b3c4294da"
-
-workers_dev = true
-
-kv_namespaces = [
-    { binding = "MY_KV", id = "1ea73eb13482450d9fca6ee0ae6c50fe" }
-]
