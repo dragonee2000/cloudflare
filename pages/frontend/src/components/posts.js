@@ -26,10 +26,9 @@ const Posts = () => {
         getPosts();
     }, []);
 
-  
     const createPost = async () => {
         const resp = await fetch(
-            "https://serverless-api.dragonee.workers.dev/api/posts", {
+            "https://serverless-api.dragonee.workers.dev/api/posts/", {
                 method: 'post',
                 headers: { 'Content-Type' : 'application/json' },
                 query: {
@@ -40,8 +39,6 @@ const Posts = () => {
         )
         const postsResp = await resp.json();
         setPosts(postsResp);
-
-        
     }
 
     return (
@@ -81,7 +78,6 @@ const Posts = () => {
                         id="text-field"
                         label="Text"
                         multiline
-                        maxRows={8}
                         rows={4}
                         value={text}
                         onChange={e => setText(e.target.value)}
