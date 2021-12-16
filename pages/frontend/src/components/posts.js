@@ -27,18 +27,27 @@ const Posts = () => {
     }, []);
 
     const createPost = async () => {
-        const resp = await fetch(
+        fetch(
             "https://serverless-api.dragonee.workers.dev/api/posts/", {
-                method: 'post',
-                headers: { 'Content-Type' : 'application/json' },
-                query: {
+                method: "POST",
+                body: JSON.stringify({
                     text,
                     title
-                }
+                })
             }
         )
-        const postsResp = await resp.json();
-        setPosts(postsResp);
+        .then((resp) => resp.json())
+        .then((res) => {
+            console.log(res);
+            setPosts(res);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+        .finally(() => {
+            setText('');
+            setTitle('');
+        })
     }
 
     return (
